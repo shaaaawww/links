@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark light">
+  <meta name="theme-color" content="#111217">
+  <meta name="description" content="Seven websites by shaaaawww, all in one place.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="The Collection — shaaaawww">
+  <meta property="og:description" content="Seven websites. One link.">
+  <title>The Collection — shaaaawww</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #111217;
+      --surface: #1a1b23;
+      --surface-hover: #22232d;
+      --text: #f3f1f5;
+      --muted: #a3a1af;
+      --line: #343441;
+      --accent: #c6afff;
+      --focus: #cab2ff;
+    }
+    :root[data-theme="light"] {
+      color-scheme: light;
+      --bg: #f7f6f9;
+      --surface: #ffffff;
+      --surface-hover: #f0edf7;
+      --text: #24212d;
+      --muted: #656271;
+      --line: #dedbe6;
+      --accent: #7253b4;
+      --focus: #7253b4;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { min-height: 100%; }
+    body {
+      min-width: 320px;
+      min-height: 100svh;
+      display: flex;
+      flex-direction: column;
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    a, button { -webkit-tap-highlight-color: transparent; }
+    a:focus-visible, button:focus-visible { outline: 3px solid var(--focus); outline-offset: 4px; }
+    .wrap { width: min(100% - 32px, 560px); margin-inline: auto; }
+    header { border-bottom: 1px solid var(--line); }
+    .topbar { min-height: 49px; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+    .brand { font-weight: 800; font-size: .92rem; letter-spacing: -.045em; text-decoration: none; color: var(--text); }
+    .brand span { color: var(--accent); }
+    .theme-toggle {
+      background: none;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 6px 10px;
+      color: var(--muted);
+      font-family: inherit; font-size: .68rem; font-weight: 600; line-height: 1.25;
+      cursor: pointer;
+      transition: background .16s ease, color .16s ease;
+    }
+    .theme-toggle:hover { background: var(--surface); color: var(--text); }
+    main { flex: 1; padding-block: clamp(17px, 3vh, 28px); }
+    .intro { margin-bottom: 15px; }
+    .eyebrow { color: var(--accent); font-size: .62rem; font-weight: 750; text-transform: uppercase; letter-spacing: .13em; margin: 0 0 5px; }
+    h1 { margin: 0; font: 400 clamp(1.75rem, 5vw, 2.45rem)/1.1 Georgia, "Times New Roman", serif; letter-spacing: -.045em; }
+    .link-list { display: grid; gap: 7px; }
+    .site-row {
+      display: flex;
+      align-items: center;
+      min-height: 51px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 0 9px;
+      transition: background .16s ease, border-color .16s ease;
+    }
+    .site-row:hover, .site-row:focus-within { background: var(--surface-hover); border-color: var(--accent); }
+    .favorite {
+      display: grid;
+      place-items: center;
+      flex: 0 0 28px;
+      width: 28px;
+      height: 36px;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      color: var(--muted);
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 1.4rem;
+      line-height: 1;
+      transition: color .16s ease;
+    }
+    .favorite:hover, .favorite[aria-pressed="true"] { color: var(--accent); }
+    .site-link {
+      display: flex;
+      align-items: center;
+      flex: 1;
+      min-width: 0;
+      min-height: 49px;
+      padding: 7px 3px 7px 8px;
+      gap: 9px;
+      color: var(--text);
+      text-decoration: none;
+    }
+    .link-copy { min-width: 0; flex: 1; }
+    .name { display: block; font-size: clamp(.84rem, 2.4vw, .96rem); font-weight: 700; letter-spacing: -.02em; line-height: 1.2; }
+    .type { display: block; font-size: .66rem; color: var(--muted); margin-top: 2px; line-height: 1.15; }
+    .arrow { color: var(--accent); font-size: 1.05rem; font-weight: 400; line-height: 1; margin-left: auto; }
+    footer { border-top: 1px solid var(--line); }
+    .footer-inner { min-height: 40px; display: flex; align-items: center; justify-content: space-between; gap: 12px; color: var(--muted); font-size: .68rem; }
+    .footer-inner a { color: var(--muted); text-decoration: none; }
+    .footer-inner a:hover { color: var(--accent); }
+    @media (max-width: 520px) {
+      .wrap { width: min(100% - 24px, 560px); }
+      .topbar { min-height: 45px; }
+      main { padding-block: 16px 18px; }
+      .intro { margin-bottom: 13px; }
+      .link-list { gap: 6px; }
+      .site-row { min-height: 48px; padding-inline: 7px; border-radius: 9px; }
+      .site-link { min-height: 46px; gap: 8px; padding: 6px 2px 6px 6px; }
+      .favorite { flex-basis: 26px; width: 26px; height: 34px; }
+      .name { font-size: .86rem; }
+      .type { font-size: .62rem; }
+      .arrow { font-size: 1rem; }
+      .footer-inner { min-height: 35px; }
+    }
+    @media (max-height: 650px) {
+      main { padding-block: 12px 14px; }
+      .intro { margin-bottom: 10px; }
+      .eyebrow { margin-bottom: 3px; }
+      h1 { font-size: 1.7rem; }
+      .link-list { gap: 5px; }
+      .site-row { min-height: 43px; }
+      .site-link { min-height: 41px; padding-block: 5px; }
+      .topbar { min-height: 42px; }
+      .footer-inner { min-height: 34px; }
+    }
+    @media (prefers-reduced-motion: reduce) { .site-row, .favorite, .theme-toggle { transition: none; } }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap topbar">
+      <a class="brand" href="#top">shaaaawww<span>.</span></a>
+      <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Switch to light mode">Light mode</button>
+    </div>
+  </header>
+
+  <main class="wrap" id="top">
+    <div class="intro">
+      <p class="eyebrow">My websites</p>
+      <h1>The Collection</h1>
+    </div>
+
+    <nav class="link-list" id="link-list" aria-label="Websites">
+      <div class="site-row" data-id="avatar-animal-companion-sorting-quiz" data-name="Avatar Animal Companion Quiz">
+        <button class="favorite" type="button" aria-label="Add Avatar Animal Companion Quiz to favorites" aria-pressed="false" title="Favorite Avatar Animal Companion Quiz"><span aria-hidden="true">☆</span></button>
+        <a class="site-link" href="https://shaaaawww.github.io/avatar-animal-companion-sorting-quiz/" target="_blank" rel="noopener noreferrer">
+          <span class="link-copy"><span class="name">Avatar Animal Companion Quiz</span><span class="type">Interactive quiz</span></span><span class="arrow" aria-hidden="true">↗</span>
+        </a>
+      </div>
+      <div class="site-row" data-id="dnd-alignment-quiz" data-name="D&amp;D Alignment Quiz">
+        <button class="favorite" type="button" aria-label="Add D&amp;D Alignment Quiz to favorites" aria-pressed="false" title="Favorite D&amp;D Alignment Quiz"><span aria-hidden="true">☆</span></button>
+        <a class="site-link" href="https://shaaaawww.github.io/dnd-alignment-quiz/" target="_blank" rel="noopener noreferrer">
+          <span class="link-copy"><span class="name">D&amp;D Alignment Quiz</span><span class="type">Interactive quiz</span></span><span class="arrow" aria-hidden="true">↗</span>
+        </a>
+      </div>
+      <div class="site-row" data-id="hogwarts-sorting" data-name="Hogwarts Sorting">
+        <button class="favorite" type="button" aria-label="Add Hogwarts Sorting to favorites" aria-pressed="false" title="Favorite Hogwarts Sorting"><span aria-hidden="true">☆</span></button>
+        <a class="site-link" href="https://shaaaawww.github.io/hogwarts-sorting/" target="_blank" rel="noopener noreferrer">
+          <span class="link-copy"><span class="name">Hogwarts Sorting</span><span class="type">Interactive quiz</span></span><span class="arrow" aria-hidden="true">↗</span>
+        </a>
+      </div>
+      <div class="site-row" data-id="mythical-bestiary" data-name="Mythical Bestiary">
+        <button class="favorite" type="button" aria-label="Add Mythical Bestiary to favorites" aria-pressed="false" title="Favorite Mythical Bestiary"><span aria-hidden="true">☆</span></button>
+        <a class="site-link" href="https://shaaaawww.github.io/mythical-bestiary/" target="_blank" rel="noopener noreferrer">
+          <span class="link-copy"><span class="name">Mythical Bestiary</span><span class="type">Reference</span></span><span class="arrow" aria-hidden="true">↗</span>
+        </a>
+      </div>
+      <div class="site-row" data-id="mythical-creature-generator" data-name="Mythical Creature Generator">
+        <button class="favorite" type="button" aria-label="Add Mythical Creature Generator to favorites" aria-pressed="false" title="Favorite Mythical Creature Generator"><span aria-hidden="true">☆</span></button>
+        <a class="site-link" href="https://shaaaawww.github.io/mythical-creature-generator/" target="_blank" rel="noopener noreferrer">
+          <span class="link-copy"><span class="name">Mythical Creature Generator</span><span class="type">Creative tool</span></span><span class="arrow" aria-hidden="true">↗</span>
+        </a>
+      </div>
+      <div class="site-row" data-id="nordic-culture" data-name="Nordic Culture">
+        <button class="favorite" type="button" aria-label="Add Nordic Culture to favorites" aria-pressed="false" title="Favorite Nordic Culture"><span aria-hidden="true">☆</span></button>
+        <a class="site-link" href="https://shaaaawww.github.io/nordic-culture/" target="_blank" rel="noopener noreferrer">
+          <span class="link-copy"><span class="name">Nordic Culture</span><span class="type">History &amp; culture</span></span><span class="arrow" aria-hidden="true">↗</span>
+        </a>
+      </div>
+      <div class="site-row" data-id="the-fall-of-h3" data-name="The Fall of H3">
+        <button class="favorite" type="button" aria-label="Add The Fall of H3 to favorites" aria-pressed="false" title="Favorite The Fall of H3"><span aria-hidden="true">☆</span></button>
+        <a class="site-link" href="https://shaaaawww.github.io/the-fall-of-h3/" target="_blank" rel="noopener noreferrer">
+          <span class="link-copy"><span class="name">The Fall of H3</span><span class="type">Archive</span></span><span class="arrow" aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </nav>
+  </main>
+
+  <footer>
+    <div class="wrap footer-inner"><span>© <span id="year">2026</span> shaaaawww</span><a href="https://github.com/shaaaawww" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div>
+  </footer>
+
+  <script>
+    (() => {
+      const root = document.documentElement;
+      const toggle = document.getElementById('theme-toggle');
+      const updateToggle = () => {
+        const light = root.dataset.theme === 'light';
+        toggle.textContent = light ? 'Dark mode' : 'Light mode';
+        toggle.setAttribute('aria-label', `Switch to ${light ? 'dark' : 'light'} mode`);
+        document.querySelector('meta[name="theme-color"]').content = light ? '#f7f6f9' : '#111217';
+      };
+      try {
+        const saved = localStorage.getItem('shaaaawww-collection-theme');
+        if (saved === 'dark' || saved === 'light') root.dataset.theme = saved;
+      } catch (_) { /* Local storage is optional. */ }
+      updateToggle();
+      toggle.addEventListener('click', () => {
+        root.dataset.theme = root.dataset.theme === 'dark' ? 'light' : 'dark';
+        updateToggle();
+        try { localStorage.setItem('shaaaawww-collection-theme', root.dataset.theme); } catch (_) { /* Local storage is optional. */ }
+      });
+      // Favorites are stored locally in each visitor's browser.
+      const list = document.getElementById('link-list');
+      const rows = Array.from(list.querySelectorAll('.site-row'));
+      const storageKey = 'shaaaawww-collection-favorites';
+      let favorites = new Set();
+      try {
+        const stored = JSON.parse(localStorage.getItem(storageKey) || '[]');
+        if (Array.isArray(stored)) favorites = new Set(stored.filter(id => rows.some(row => row.dataset.id === id)));
+      } catch (_) { /* The page still works when local storage is disabled. */ }
+
+      function renderFavorites() {
+        rows.sort((a, b) =>
+          Number(favorites.has(b.dataset.id)) - Number(favorites.has(a.dataset.id)) ||
+          a.dataset.name.localeCompare(b.dataset.name, 'en', { sensitivity: 'base' })
+        );
+        rows.forEach(row => {
+          const active = favorites.has(row.dataset.id);
+          const button = row.querySelector('.favorite');
+          const name = row.dataset.name;
+          button.setAttribute('aria-pressed', String(active));
+          button.setAttribute('aria-label', `${active ? 'Remove' : 'Add'} ${name} ${active ? 'from' : 'to'} favorites`);
+          button.title = `${active ? 'Unfavorite' : 'Favorite'} ${name}`;
+          button.querySelector('span').textContent = active ? '★' : '☆';
+          list.appendChild(row);
+        });
+      }
+
+      rows.forEach(row => {
+        row.querySelector('.favorite').addEventListener('click', () => {
+          if (favorites.has(row.dataset.id)) favorites.delete(row.dataset.id);
+          else favorites.add(row.dataset.id);
+          try { localStorage.setItem(storageKey, JSON.stringify([...favorites])); } catch (_) { /* Optional storage. */ }
+          renderFavorites();
+        });
+      });
+      renderFavorites();
+      document.getElementById('year').textContent = new Date().getFullYear();
+    })();
+  </script>
+</body>
+</html>
